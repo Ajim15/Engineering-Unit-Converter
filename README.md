@@ -10,7 +10,94 @@
     max-width: 400px;
     margin: auto;
     background: #ffffff;
-    padding: 20px;
+    padding: 20px;[egnunitcon.html(script).txt](https://github.com/user-attachments/files/18501475/egnunitcon.html.script.txt)// Units and conversion factors
+const units = {
+    length: {
+        meter: 1,
+        kilometer: 0.001,
+        mile: 0.000621371,
+        inch: 39.3701,
+        foot: 3.28084
+    },
+    mass: {
+        kilogram: 1,
+        gram: 1000,
+        pound: 2.20462,
+        ounce: 35.274
+    },
+    temperature: {
+        celsius: 'C',
+        fahrenheit: 'F',
+        kelvin: 'K'
+    }
+};
+
+// Update unit dropdowns based on the selected type
+function updateUnits() {
+    const unitType = document.getElementById('unitType').value;
+    const fromUnit = document.getElementById('fromUnit');
+    const toUnit = document.getElementById('toUnit');
+
+    // Clear existing options
+    fromUnit.innerHTML = '';
+    toUnit.innerHTML = '';
+
+    // Populate dropdowns with relevant units
+    for (let unit in units[unitType]) {
+        const option1 = document.createElement('option');
+        const option2 = document.createElement('option');
+        option1.value = unit;
+        option1.textContent = unit;
+        option2.value = unit;
+        option2.textContent = unit;
+        fromUnit.appendChild(option1);
+        toUnit.appendChild(option2);
+    }
+}
+
+// Convert function
+function convert() {
+    const unitType = document.getElementById('unitType').value;
+    const inputValue = parseFloat(document.getElementById('inputValue').value);
+    const fromUnit = document.getElementById('fromUnit').value;
+    const toUnit = document.getElementById('toUnit').value;
+
+    if (isNaN(inputValue)) {
+        document.getElementById('result').textContent = 'Please enter a valid number.';
+        return;
+    }
+
+    let result;
+
+    if (unitType === 'temperature') {
+        // Handle temperature conversions separately
+        if (fromUnit === toUnit) {
+            result = inputValue;
+        } else if (fromUnit === 'celsius' && toUnit === 'fahrenheit') {
+            result = (inputValue * 9) / 5 + 32;
+        } else if (fromUnit === 'celsius' && toUnit === 'kelvin') {
+            result = inputValue + 273.15;
+        } else if (fromUnit === 'fahrenheit' && toUnit === 'celsius') {
+            result = ((inputValue - 32) * 5) / 9;
+        } else if (fromUnit === 'fahrenheit' && toUnit === 'kelvin') {
+            result = ((inputValue - 32) * 5) / 9 + 273.15;
+        } else if (fromUnit === 'kelvin' && toUnit === 'celsius') {
+            result = inputValue - 273.15;
+        } else if (fromUnit === 'kelvin' && toUnit === 'fahrenheit') {
+            result = ((inputValue - 273.15) * 9) / 5 + 32;
+        }
+    } else {
+        // Handle length and mass conversions
+        result = inputValue * (units[unitType][toUnit] / units[unitType][fromUnit]);
+    }
+
+    document.getElementById('result').textContent = `Converted Value: ${result.toFixed(2)}`;
+}
+
+// Initialize unit dropdowns
+window.onload = updateUnits;
+
+
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
