@@ -1,6 +1,54 @@
 [egnunitcon.html(styling).txt](https://github.com/user-attachments/files/18501470/egnunitcon.html.styling.txt)# Engineering-Unit-Converter
 [Uploadingbody {
-    font-family: Arial, sans-serif;
+    font-f<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Unit Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Engineering Unit Converter</h1>
+        <form id="converterForm">
+            <!-- Input Value -->
+            <div class="form-group">
+                <label for="inputValue">Enter Value:</label>
+                <input type="number" id="inputValue" placeholder="Enter a number" required>
+            </div>
+
+            <!-- Unit Type -->
+            <div class="form-group">
+                <label for="unitType">Select Unit Type:</label>
+                <select id="unitType" onchange="updateUnits()">
+                    <option value="length">Length</option>
+                    <option value="mass">Mass</option>
+                    <option value="temperature">Temperature</option>
+                </select>
+            </div>
+
+            <!-- From Unit -->
+            <div class="form-group">
+                <label for="fromUnit">From:</label>
+                <select id="fromUnit"></select>
+            </div>
+
+            <!-- To Unit -->
+            <div class="form-group">
+                <label for="toUnit">To:</label>
+                <select id="toUnit"></select>
+            </div>
+
+            <button type="button" onclick="convert()">Convert</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+amily: Arial, sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 20px;
