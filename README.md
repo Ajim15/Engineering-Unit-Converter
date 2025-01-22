@@ -17,7 +17,7 @@ This project is a web-based unit converter for engineering purposes. It supports
 - **JavaScript**: Logic for unit conversions.
 
 ## How to Use
-1. Visit the live project: [GitHub Pages Link](https://<your-username>.github.io/<repository-name>)
+1. Visit the live project: [GitHub Pages Link]((https://ajim15.github.io/Engineering-Unit-Converter/))
 2. Select a unit type (e.g., Length, Mass, or Temperature).
 3. Enter the value to convert and select the "From" and "To" units.
 4. Click **Convert** to see the result.
